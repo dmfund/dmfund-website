@@ -1,0 +1,13 @@
+{
+  "name": "dmfund-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node src/build.js",
+    "dev": "node src/build.js && npx serve dist"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "handlebars": "^4.7.8"
+  }
+}

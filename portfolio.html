@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio &mdash; Davis Macleod</title>
+  <meta name="description" content="Explore the Davis Macleod portfolio of acquired businesses across services, healthcare, technology, and industrial sectors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Davis <span>Macleod</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="portfolio.html" class="nav__link nav__link--active">Portfolio</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
+        <a href="#" class="nav__link nav__link--cta">Investor Login</a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h4 style="color: var(--color-secondary);">Our Investments</h4>
+      <h1>Portfolio</h1>
+      <div class="divider"></div>
+      <p>We invest in enduring businesses with strong cash flows, loyal customers, and dedicated teams. Each company in our portfolio benefits from our hands-on support, operational expertise, and long-term commitment.</p>
+    </div>
+  </section>
+
+  <!-- Portfolio Stats -->
+  <section class="section">
+    <div class="container">
+      <div class="stats fade-up">
+        <div class="stat">
+          <div class="stat__number">8</div>
+          <div class="stat__label">Active Companies</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">4</div>
+          <div class="stat__label">Active Searches</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">$50M+</div>
+          <div class="stat__label">Combined Revenue</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">500+</div>
+          <div class="stat__label">Employees Across Portfolio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Filter + Grid -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="portfolio-filters fade-up">
+        <button class="portfolio-filter portfolio-filter--active" data-filter="all">All Investments</button>
+        <button class="portfolio-filter" data-filter="operating">Operating Companies</button>
+        <button class="portfolio-filter" data-filter="search">Active Searches</button>
+        <button class="portfolio-filter" data-filter="exited">Realized</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+
+        <!-- Operating Companies -->
+        <div class="portfolio-card fade-up delay-1" data-category="operating">
+          <div class="portfolio-card__image">
+            <span>Alpine Services</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Business Services</span>
+            <h3 class="portfolio-card__title">Alpine Services Group</h3>
+            <p class="portfolio-card__desc">A leading provider of commercial facility maintenance services across the Pacific Northwest. Serving 200+ commercial clients with integrated janitorial, landscaping, and building maintenance solutions.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2021
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Sector</strong>
+                Facility Services
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Role</strong>
+                Board Chair
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-2" data-category="operating">
+          <div class="portfolio-card__image">
+            <span>Meridian Health</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Healthcare Services</span>
+            <h3 class="portfolio-card__title">Meridian Health Partners</h3>
+            <p class="portfolio-card__desc">Multi-location physical therapy and rehabilitation practice delivering evidence-based care. Twelve clinics across two states with a focus on orthopedic and sports medicine outcomes.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2022
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Sector</strong>
+                Healthcare
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Role</strong>
+                Board Member
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-3" data-category="operating">
+          <div class="portfolio-card__image">
+            <span>Ironwood</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Industrial</span>
+            <h3 class="portfolio-card__title">Ironwood Manufacturing</h3>
+            <p class="portfolio-card__desc">Precision CNC machining and fabrication serving aerospace and defense customers. ISO 9001-certified facility with 40+ years of operational history and deep customer relationships.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2020
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Sector</strong>
+                Manufacturing
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Role</strong>
+                Board Member
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-1" data-category="operating">
+          <div class="portfolio-card__image">
+            <span>Summit Learning</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Education</span>
+            <h3 class="portfolio-card__title">Summit Learning Group</h3>
+            <p class="portfolio-card__desc">Professional development and corporate training platform serving mid-market enterprises. SaaS-enabled delivery model with high retention rates and expanding content library.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2023
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Sector</strong>
+                EdTech / Services
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Role</strong>
+                Board Chair
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-2" data-category="operating">
+          <div class="portfolio-card__image">
+            <span>Cascade</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Technology Services</span>
+            <h3 class="portfolio-card__title">Cascade IT Solutions</h3>
+            <p class="portfolio-card__desc">Managed IT services and cybersecurity provider for small and mid-sized businesses. Recurring revenue model with 95%+ client retention across a base of 150+ managed clients.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2022
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Sector</strong>
+                IT Services
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Role</strong>
+                Board Member
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-3" data-category="operating">
+          <div class="portfolio-card__image">
+            <span>Trailhead</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Consumer Services</span>
+            <h3 class="portfolio-card__title">Trailhead Veterinary</h3>
+            <p class="portfolio-card__desc">Multi-location veterinary practice group providing comprehensive animal care. Four locations with a team-first culture, strong community ties, and a growing base of loyal pet owners.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2023
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Sector</strong>
+                Veterinary
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Role</strong>
+                Board Observer
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-1" data-category="operating">
+          <div class="portfolio-card__image">
+            <span>Ridgeline</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Business Services</span>
+            <h3 class="portfolio-card__title">Ridgeline Environmental</h3>
+            <p class="portfolio-card__desc">Environmental consulting and remediation services for commercial and government clients. Specialized in regulatory compliance, site assessments, and contamination remediation.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2024
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Sector</strong>
+                Environmental
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Role</strong>
+                Board Chair
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-2" data-category="operating">
+          <div class="portfolio-card__image">
+            <span>Cornerstone</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Financial Services</span>
+            <h3 class="portfolio-card__title">Cornerstone Benefits</h3>
+            <p class="portfolio-card__desc">Employee benefits brokerage and consulting firm specializing in mid-market employers. Trusted advisor to HR teams managing health, retirement, and voluntary benefit programs.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2024
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Sector</strong>
+                Insurance / Benefits
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Role</strong>
+                Board Member
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Searches -->
+        <div class="portfolio-card fade-up delay-1" data-category="search">
+          <div class="portfolio-card__image" style="background: linear-gradient(135deg, #2a3a4e, #3d5a80);">
+            <span>Active Search</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Search Fund</span>
+            <h3 class="portfolio-card__title">Search #1 &mdash; Business Services</h3>
+            <p class="portfolio-card__desc">Searcher focused on B2B services companies with $2-8M in revenue, recurring revenue characteristics, and strong customer retention in the U.S. market.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Status</strong>
+                Searching
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Year</strong>
+                2024
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-2" data-category="search">
+          <div class="portfolio-card__image" style="background: linear-gradient(135deg, #2a3a4e, #3d5a80);">
+            <span>Active Search</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Search Fund</span>
+            <h3 class="portfolio-card__title">Search #2 &mdash; Healthcare</h3>
+            <p class="portfolio-card__desc">Searcher targeting healthcare services businesses with strong unit economics, fragmented markets, and opportunities for geographic expansion.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Status</strong>
+                Searching
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Year</strong>
+                2024
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-3" data-category="search">
+          <div class="portfolio-card__image" style="background: linear-gradient(135deg, #2a3a4e, #3d5a80);">
+            <span>Active Search</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Search Fund</span>
+            <h3 class="portfolio-card__title">Search #3 &mdash; Technology</h3>
+            <p class="portfolio-card__desc">Searcher focused on vertical SaaS and technology-enabled services with $1-5M ARR, low churn, and strong product-market fit in niche end markets.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Status</strong>
+                Searching
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Year</strong>
+                2025
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card fade-up delay-4" data-category="search">
+          <div class="portfolio-card__image" style="background: linear-gradient(135deg, #2a3a4e, #3d5a80);">
+            <span>Active Search</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Search Fund</span>
+            <h3 class="portfolio-card__title">Search #4 &mdash; Industrial Services</h3>
+            <p class="portfolio-card__desc">Searcher targeting industrial and infrastructure services businesses with mission-critical service offerings and strong local market positions.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Status</strong>
+                Searching
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Year</strong>
+                2025
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Realized -->
+        <div class="portfolio-card fade-up delay-1" data-category="exited">
+          <div class="portfolio-card__image" style="background: linear-gradient(135deg, #6b6b6b, #999);">
+            <span>Realized</span>
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Realized Investment</span>
+            <h3 class="portfolio-card__title">Westbrook Distribution</h3>
+            <p class="portfolio-card__desc">Regional wholesale distribution company serving the food and beverage industry. Successfully grew revenue 3x during hold period before a strategic sale.</p>
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                2018
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Exited</strong>
+                2023
+              </div>
+              <div class="portfolio-card__meta-item">
+                <strong>Return</strong>
+                4.2x
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment Criteria -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="section-header text-center fade-up">
+        <h4>What We Look For</h4>
+        <h2>Investment Criteria</h2>
+        <div class="divider"></div>
+        <p>We invest in search funds and directly acquire businesses that meet our core criteria. We seek enduring businesses with defensible positions and strong cash flow characteristics.</p>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card fade-up delay-1">
+          <div class="philosophy-card__number">$3-15M</div>
+          <h3>Revenue Range</h3>
+          <p>We target companies with $3M to $15M in annual revenue, providing a solid foundation for growth while remaining accessible for search fund acquisitions.</p>
+        </div>
+        <div class="philosophy-card fade-up delay-2">
+          <div class="philosophy-card__number">20%+</div>
+          <h3>EBITDA Margins</h3>
+          <p>Strong profitability is essential. We look for businesses with healthy margins that demonstrate pricing power and operational efficiency.</p>
+        </div>
+        <div class="philosophy-card fade-up delay-3">
+          <div class="philosophy-card__number">90%+</div>
+          <h3>Customer Retention</h3>
+          <p>Recurring revenue, long-term contracts, and sticky customer relationships are hallmarks of the businesses we seek to acquire and steward.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2 class="fade-up">Are You Searching?</h2>
+      <p class="fade-up delay-1">We are always looking to back exceptional entrepreneurs in their search for the right business. Reach out to start the conversation.</p>
+      <div class="fade-up delay-2">
+        <a href="mailto:info@dmfund.co" class="btn btn--secondary">Contact Us</a>
+        <a href="about.html" class="btn btn--outline" style="color: white; border-color: rgba(255,255,255,0.3);">Meet the Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__logo">Davis <span>Macleod</span></div>
+          <p class="footer__desc">A family investment office backing exceptional entrepreneurs through the search fund model. Patient capital for enduring businesses.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Navigation</div>
+          <a href="index.html" class="footer__link">Home</a>
+          <a href="portfolio.html" class="footer__link">Portfolio</a>
+          <a href="about.html" class="footer__link">About</a>
+          <a href="index.html#contact" class="footer__link">Contact</a>
+        </div>
+        <div>
+          <div class="footer__heading">Resources</div>
+          <a href="#" class="footer__link">Investor Login</a>
+          <a href="#" class="footer__link">Search Fund 101</a>
+          <a href="#" class="footer__link">FAQ</a>
+        </div>
+        <div>
+          <div class="footer__heading">Connect</div>
+          <a href="mailto:info@dmfund.co" class="footer__link">info@dmfund.co</a>
+          <a href="#" class="footer__link">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 Davis Macleod. All rights reserved.</span>
+        <div class="footer__social">
+          <a href="#" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{> head title="Portfolio &mdash; Davis/Macleod" metaDescription="Explore the Davis/Macleod portfolio of acquired businesses across services, healthcare, technology, and industrial sectors."}}
+</head>
+<body>
+
+{{> nav activePage=activePage navLight=true}}
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h4 style="color: var(--color-secondary);">Our Investments</h4>
+      <h1>Portfolio</h1>
+      <div class="divider"></div>
+      <p>We invest in enduring businesses with strong cash flows, loyal customers, and dedicated teams. Each company in our portfolio benefits from our hands-on support, operational expertise, and long-term commitment.</p>
+    </div>
+  </section>
+
+  <!-- Portfolio Stats -->
+  <section class="section">
+    <div class="container">
+{{> stats stats=stats}}
+    </div>
+  </section>
+
+  <!-- Portfolio Filter + Grid -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="portfolio-filters fade-up">
+        <button class="portfolio-filter portfolio-filter--active" data-filter="all">All Investments</button>
+        <button class="portfolio-filter" data-filter="operating">Active Companies</button>
+        <button class="portfolio-filter" data-filter="exited">Realized</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+        {{#each activeInvestments}}
+        <div class="portfolio-card fade-up {{delayClass @index}}" data-category="operating">
+          <div class="portfolio-card__image{{#if (hasLogo this.Logo)}} portfolio-card__image--logo{{/if}}">
+            {{#if (hasLogo this.Logo)}}
+            <img src="{{logoUrl this.Logo}}" alt="{{this.Name}}">
+            {{else}}
+            <span>{{this.Name}}</span>
+            {{/if}}
+          </div>
+          <div class="portfolio-card__body">
+            <h3 class="portfolio-card__title">{{this.Name}}</h3>
+            {{#if this.Location}}
+            <div class="portfolio-card__location">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              {{this.Location}}
+            </div>
+            {{/if}}
+            {{#if this.Description}}
+            <p class="portfolio-card__desc">{{this.Description}}</p>
+            {{/if}}
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                {{year this.[Acquired Date]}}
+              </div>
+              {{#if this.Website}}
+              <div class="portfolio-card__meta-item">
+                <strong>Website</strong>
+                <a href="{{this.Website}}" target="_blank" rel="noopener">Visit &rarr;</a>
+              </div>
+              {{/if}}
+              {{#if (eq this.[Board Seat] 'Yes')}}
+              <div class="portfolio-card__meta-item">
+                <span class="portfolio-card__badge">Board Seat</span>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        {{/each}}
+
+        {{#each exitedInvestments}}
+        <div class="portfolio-card fade-up {{delayClass @index}}" data-category="exited">
+          <div class="portfolio-card__image{{#if (hasLogo this.Logo)}} portfolio-card__image--logo{{else}}" style="background: linear-gradient(135deg, #6b6b6b, #999);{{/if}}">
+            {{#if (hasLogo this.Logo)}}
+            <img src="{{logoUrl this.Logo}}" alt="{{this.Name}}">
+            {{else}}
+            <span>Realized</span>
+            {{/if}}
+          </div>
+          <div class="portfolio-card__body">
+            <span class="portfolio-card__tag">Realized Investment</span>
+            <h3 class="portfolio-card__title">{{this.Name}}</h3>
+            {{#if this.Location}}
+            <div class="portfolio-card__location">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              {{this.Location}}
+            </div>
+            {{/if}}
+            {{#if this.Description}}
+            <p class="portfolio-card__desc">{{this.Description}}</p>
+            {{/if}}
+            <div class="portfolio-card__meta">
+              <div class="portfolio-card__meta-item">
+                <strong>Acquired</strong>
+                {{year this.[Acquired Date]}}
+              </div>
+              {{#if this.Website}}
+              <div class="portfolio-card__meta-item">
+                <strong>Website</strong>
+                <a href="{{this.Website}}" target="_blank" rel="noopener">Visit &rarr;</a>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment Criteria -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="section-header text-center fade-up">
+        <h4>What We Look For</h4>
+        <h2>Investment Criteria</h2>
+        <div class="divider"></div>
+        <p>We invest in search funds and directly acquire businesses that meet our core criteria. We seek enduring businesses with defensible positions and strong cash flow characteristics.</p>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card fade-up delay-1">
+          <div class="philosophy-card__number">$3-15M</div>
+          <h3>Revenue Range</h3>
+          <p>We target companies with $3M to $15M in annual revenue, providing a solid foundation for growth while remaining accessible for search fund acquisitions.</p>
+        </div>
+        <div class="philosophy-card fade-up delay-2">
+          <div class="philosophy-card__number">20%+</div>
+          <h3>EBITDA Margins</h3>
+          <p>Strong profitability is essential. We look for businesses with healthy margins that demonstrate pricing power and operational efficiency.</p>
+        </div>
+        <div class="philosophy-card fade-up delay-3">
+          <div class="philosophy-card__number">90%+</div>
+          <h3>Customer Retention</h3>
+          <p>Recurring revenue, long-term contracts, and sticky customer relationships are hallmarks of the businesses we seek to acquire and steward.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{> cta-banner heading="Are You Searching?" description="We are always looking to back exceptional entrepreneurs in their search for the right business. Reach out to start the conversation." primaryLink="mailto:info@dmfund.co" primaryText="Contact Us" secondaryLink="about.html" secondaryText="Meet the Team"}}
+
+{{> footer}}
+
+  <script src="js/main.js"></script>
+</body>
+</html>

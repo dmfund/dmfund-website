@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{> head title="About &mdash; Davis/Macleod" metaDescription="Meet the team behind Davis/Macleod. Learn about our investment philosophy, board seats, advisory board, and commitment to the search fund community."}}
+</head>
+<body>
+
+{{> nav activePage=activePage navLight=true}}
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h4 style="color: var(--color-secondary);">Who We Are</h4>
+      <h1>About Davis/Macleod</h1>
+      <div class="divider"></div>
+      <p>A family investment office with a singular focus: backing exceptional entrepreneurs who acquire and build enduring businesses.</p>
+    </div>
+  </section>
+
+  <!-- Team Members -->
+  {{#each teamMembers}}
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div class="fade-up">
+          {{#if (hasLogo this.Image)}}
+          <img src="{{logoUrl this.Image}}" alt="{{this.Name}}" style="width: 100%; aspect-ratio: 3/4; object-fit: cover;">
+          {{else}}
+          <div class="image-placeholder" style="aspect-ratio: 3/4;">{{this.Name}}</div>
+          {{/if}}
+        </div>
+        <div class="fade-up delay-2">
+          <h4>{{this.Role}}</h4>
+          <h2>{{this.Name}}</h2>
+          <div class="divider"></div>
+          {{{paragraphs this.Bio}}}
+          {{#if ../boardSeats.length}}
+          <h4 style="margin-top: 32px;">Current Board Seats</h4>
+          <ul style="margin-top: 12px; padding-left: 0; list-style: none;">
+            {{#each ../boardSeats}}
+            <li style="padding: 8px 0; border-bottom: 1px solid var(--color-border); font-size: 0.95rem;">{{#if this.Website}}<a href="{{this.Website}}" target="_blank" rel="noopener" style="color: var(--color-primary); text-decoration: none; border-bottom: 1px solid var(--color-secondary);">{{this.Name}}</a>{{else}}{{this.Name}}{{/if}}</li>
+            {{/each}}
+          </ul>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/each}}
+
+  <!-- Advisory Board -->
+  {{#if advisors.length}}
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center fade-up">
+        <h4>Our Network</h4>
+        <h2>Advisory Board &amp; Collaborators</h2>
+        <div class="divider"></div>
+        <p>We are fortunate to work alongside a group of experienced operators, investors, and advisors who bring deep expertise across industries and functional areas.</p>
+      </div>
+      <div class="advisor-list">
+        {{#each advisors}}
+        <div class="advisor-row fade-up {{delayClass @index}}">
+          <div class="advisor-row__image">
+            {{#if (hasLogo this.Image)}}
+            <img src="{{logoUrl this.Image}}" alt="{{this.Name}}">
+            {{else}}
+            <div class="advisor-row__placeholder">{{this.Name}}</div>
+            {{/if}}
+          </div>
+          <div class="advisor-row__content">
+            {{#if this.Role}}
+            <div class="advisor-row__role">{{this.Role}}</div>
+            {{/if}}
+            <h3 class="advisor-row__name">{{this.Name}}</h3>
+            {{#if this.Bio}}
+            <p class="advisor-row__bio">{{this.Bio}}</p>
+            {{/if}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  {{/if}}
+
+  <!-- Our Values -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="section-header text-center fade-up">
+        <h4>What Guides Us</h4>
+        <h2>Our Values</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card fade-up delay-1">
+          <div class="philosophy-card__number">01</div>
+          <h3>Partnership First</h3>
+          <p>We invest in people before businesses. The relationship between investor and operator is the foundation of everything we do. We earn trust through transparency and follow-through.</p>
+        </div>
+        <div class="philosophy-card fade-up delay-2">
+          <div class="philosophy-card__number">02</div>
+          <h3>Permanent Mindset</h3>
+          <p>We invest our own capital with the intent to hold indefinitely. This patience allows our CEOs to make decisions for the long term, not for the next quarterly report.</p>
+        </div>
+        <div class="philosophy-card fade-up delay-3">
+          <div class="philosophy-card__number">03</div>
+          <h3>Community Impact</h3>
+          <p>The businesses we invest in are community pillars &mdash; they employ local workers, serve local customers, and contribute to local economies. Stewardship of this responsibility matters to us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Fund 101 -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div class="fade-up">
+          <h4>Search Fund 101</h4>
+          <h2>What is a Search Fund?</h2>
+          <div class="divider"></div>
+          <p>A search fund is an investment vehicle through which an aspiring entrepreneur (the "searcher") raises capital from investors to search for, acquire, and operate a privately held company.</p>
+          <p class="mt-4">Originated at Stanford GSB in the 1980s, the search fund model has become one of the most reliable paths to entrepreneurship through acquisition. Searchers are typically MBA graduates or experienced professionals who want to run a company from day one.</p>
+          <p class="mt-4">As search fund investors, we provide capital at two stages: first, to fund the search itself, and second, to fund the acquisition. Beyond capital, we serve as mentors, board members, and strategic partners throughout the searcher's journey.</p>
+        </div>
+        <div class="fade-up delay-2">
+          <div style="background-color: var(--color-white); padding: 48px; border: 1px solid var(--color-border); border-radius: 2px;">
+            <h3 style="margin-bottom: 32px; font-size: 1.2rem;">The Search Fund Lifecycle</h3>
+            <div style="margin-bottom: 28px;">
+              <h4 style="font-size: 0.78rem; margin-bottom: 8px;">1. Raise Search Capital</h4>
+              <p style="font-size: 0.9rem;">Searcher raises a small fund ($400K-$600K) from investors to support a 2-year search for the right business.</p>
+            </div>
+            <div style="margin-bottom: 28px;">
+              <h4 style="font-size: 0.78rem; margin-bottom: 8px;">2. Search &amp; Identify</h4>
+              <p style="font-size: 0.9rem;">Full-time search to find a company meeting specific criteria: strong cash flows, defensible position, and growth potential.</p>
+            </div>
+            <div style="margin-bottom: 28px;">
+              <h4 style="font-size: 0.78rem; margin-bottom: 8px;">3. Acquire</h4>
+              <p style="font-size: 0.9rem;">Searcher leads the acquisition, raising additional capital from their investor group to fund the purchase.</p>
+            </div>
+            <div>
+              <h4 style="font-size: 0.78rem; margin-bottom: 8px;">4. Operate &amp; Grow</h4>
+              <p style="font-size: 0.9rem;">Searcher becomes CEO and runs the company with support from their board and investor group. Hold period is typically 5-10+ years.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{> cta-banner heading="Ready to Start Your Search?" description="We are always looking for exceptional entrepreneurs to back. If you are exploring the search fund path, we would love to hear from you." primaryLink="mailto:info@dmfund.co" primaryText="Start a Conversation" secondaryLink="portfolio.html" secondaryText="View Our Portfolio"}}
+
+{{> footer}}
+
+  <script src="js/main.js"></script>
+</body>
+</html>

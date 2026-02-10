@@ -1,0 +1,9 @@
+      <div class="philosophy-grid">
+        {{#each cards}}
+        <div class="philosophy-card fade-up {{delayClass @index}}">
+          <div class="philosophy-card__number">{{this.number}}</div>
+          <h3>{{this.heading}}</h3>
+          <p>{{this.description}}</p>
+        </div>
+        {{/each}}
+      </div>
