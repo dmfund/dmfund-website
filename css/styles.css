@@ -1399,6 +1399,47 @@ p {
   }
 }
 
+/* --- Login Card --- */
+.login-card {
+  background-color: var(--color-white);
+  padding: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+}
+
+.login-forgot-link {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  transition: var(--transition-fast);
+}
+
+.login-forgot-link:hover {
+  color: var(--color-accent);
+}
+
+.login-footer {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.login-footer p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0 auto;
+}
+
+.login-footer a {
+  color: var(--color-secondary);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.login-footer a:hover {
+  color: var(--color-accent);
+}
+
 /* --- Utility --- */
 .mb-0 { margin-bottom: 0; }
 .mb-1 { margin-bottom: 8px; }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{> head title="Login &mdash; Davis/Macleod" metaDescription="Log in to your Davis/Macleod investor portal."}}
+</head>
+<body>
+
+{{> nav activePage=activePage navLight=true}}
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h4 style="color: var(--color-secondary);">Investor Portal</h4>
+      <h1>Login</h1>
+      <div class="divider"></div>
+      <p>Access your portfolio dashboard and investment documents.</p>
+    </div>
+  </section>
+
+  <!-- Login Section -->
+  <section class="section">
+    <div class="container" style="max-width: 480px;">
+      <div class="fade-up">
+        <div class="login-card">
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" name="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" name="password" required placeholder="Enter your password">
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--color-text-light); text-transform: none; letter-spacing: 0; font-weight: 400; cursor: pointer;">
+                <input type="checkbox" id="rememberMe" name="remember" style="accent-color: var(--color-secondary);">
+                Remember me
+              </label>
+              <a href="#" class="login-forgot-link">Forgot password?</a>
+            </div>
+            <div id="loginStatus" style="display: none; margin-bottom: 20px; padding: 14px 16px; border-radius: 2px; font-size: 0.9rem;"></div>
+            <button type="submit" class="btn btn--primary" style="width: 100%;">Sign In</button>
+          </form>
+          <div class="login-footer">
+            <p>Don&rsquo;t have an account? <a href="contact.html">Contact us</a> to request access.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{> footer}}
+
+  <script src="js/main.js"></script>
+</body>
+</html>

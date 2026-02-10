@@ -248,6 +248,11 @@ async function build() {
           baseId: AIRTABLE_BASE_ID
         }
       }
+    },
+    {
+      template: 'login',
+      output: 'login.html',
+      data: { activePage: 'login' }
     }
   ];
 
