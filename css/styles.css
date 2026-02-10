@@ -1191,7 +1191,8 @@ p {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   width: 100%;
   padding: 14px 16px;
   border: 1.5px solid var(--color-border);
@@ -1204,7 +1205,8 @@ p {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
   border-color: var(--color-secondary);
 }
@@ -1212,6 +1214,45 @@ p {
 .form-group textarea {
   min-height: 140px;
   resize: vertical;
+}
+
+/* --- File Upload Area --- */
+.file-upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  border: 1.5px dashed var(--color-border);
+  border-radius: 2px;
+  background-color: var(--color-cream);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-align: center;
+}
+
+.file-upload-area:hover {
+  border-color: var(--color-secondary);
+  background-color: var(--color-cream-dark);
+}
+
+.file-upload-area.dragging {
+  border-color: var(--color-secondary);
+  background-color: var(--color-cream-dark);
+}
+
+.file-upload-area__icon {
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  transition: var(--transition-fast);
+}
+
+.file-upload-area:hover .file-upload-area__icon {
+  color: var(--color-secondary);
+}
+
+.file-upload-area__text {
+  font-size: 0.9rem;
 }
 
 /* --- Responsive --- */

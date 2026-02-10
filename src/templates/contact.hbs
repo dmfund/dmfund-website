@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{> head title="Contact &mdash; Davis/Macleod" metaDescription="Get in touch with Davis/Macleod. Whether you are a searcher, entrepreneur, or potential partner, we would love to hear from you."}}
+</head>
+<body>
+
+{{> nav activePage=activePage navLight=true}}
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h4 style="color: var(--color-secondary);">Reach Out</h4>
+      <h1>Contact Us</h1>
+      <div class="divider"></div>
+      <p>We are always interested in meeting talented entrepreneurs and like-minded partners.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div class="fade-up">
+          <h4>Get In Touch</h4>
+          <h2>Let&rsquo;s Start a Conversation</h2>
+          <div class="divider"></div>
+          <p>Whether you are exploring the search fund path, operating a business and looking for a long-term partner, or simply want to learn more about what we do, we would love to hear from you.</p>
+          <p class="mt-4">We respond to every inquiry personally and typically within a few business days.</p>
+
+          <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--color-border);">
+            <div style="margin-bottom: 28px;">
+              <h4 style="font-size: 0.78rem; margin-bottom: 8px;">Location</h4>
+              <p style="font-size: 0.95rem;">Lincoln, Massachusetts</p>
+            </div>
+            <div style="margin-bottom: 28px;">
+              <h4 style="font-size: 0.78rem; margin-bottom: 8px;">Email</h4>
+              <p><a href="mailto:info@dmfund.co" style="color: var(--color-primary); border-bottom: 1px solid var(--color-secondary); font-size: 0.95rem;">info@dmfund.co</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="fade-up delay-2">
+          <div style="background-color: var(--color-white); padding: 48px; border: 1px solid var(--color-border); border-radius: 2px;">
+            <form id="contactForm" data-airtable-pat="{{airtableConfig.pat}}" data-airtable-base="{{airtableConfig.baseId}}">
+              <div class="form-group">
+                <label for="contactName">Name</label>
+                <input type="text" id="contactName" name="Name" required placeholder="Your full name">
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email</label>
+                <input type="email" id="contactEmail" name="Email" required placeholder="you@example.com">
+              </div>
+              <div class="form-group">
+                <label for="contactSubject">Subject</label>
+                <select id="contactSubject" name="Subject" required style="width: 100%; padding: 14px 16px; border: 1.5px solid var(--color-border); border-radius: 2px; font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text); background-color: var(--color-white); transition: var(--transition-fast); appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1%201l5%205%205-5%22%20stroke%3D%22%236b6b6b%22%20stroke-width%3D%221.5%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 16px center; cursor: pointer;">
+                  <option value="" disabled selected>Select a topic</option>
+                  <option value="I'm a Searcher">I'm a Searcher</option>
+                  <option value="Investment Opportunity">Investment Opportunity</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactMessage">Message</label>
+                <textarea id="contactMessage" name="Message" required placeholder="Tell us a bit about yourself and how we can help..."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Attachment <span style="font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.82rem; color: var(--color-text-muted);">(optional)</span></label>
+                <input type="file" id="contactAttachment" name="Attachment" style="display: none;">
+                <div id="fileUploadArea" class="file-upload-area">
+                  <div class="file-upload-area__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  </div>
+                  <div class="file-upload-area__text">
+                    <span id="fileUploadLabel" style="font-weight: 500; color: var(--color-primary);">Choose a file</span>
+                    <span style="color: var(--color-text-muted); font-size: 0.82rem;"> or drag and drop</span>
+                  </div>
+                  <div id="fileUploadName" style="display: none; margin-top: 8px; font-size: 0.82rem; color: var(--color-secondary); font-weight: 500;"></div>
+                </div>
+              </div>
+              <div id="contactStatus" style="display: none; margin-bottom: 20px; padding: 14px 16px; border-radius: 2px; font-size: 0.9rem;"></div>
+              <button type="submit" class="btn btn--primary" style="width: 100%;">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{> cta-banner heading="Explore Our Portfolio" description="See the entrepreneurs and businesses we have partnered with across North America." primaryLink="portfolio.html" primaryText="View Portfolio" secondaryLink="about.html" secondaryText="About Us"}}
+
+{{> footer}}
+
+  <script src="js/main.js"></script>
+</body>
+</html>

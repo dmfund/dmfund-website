@@ -71,16 +71,14 @@ function computeStats(investments) {
 
   return {
     home: [
-      { Number: `${investments.length}`, Label: 'Investments' },
       { Number: `${active.length}`, Label: 'Active Companies' },
       { Number: config.combinedRevenue, Label: 'Combined Revenue' },
-      { Number: `${boardSeats.length}`, Label: 'Board Seats' },
-      { Number: config.yearsInvesting, Label: 'Years Investing' }
+      { Number: config.activeSearchFunds, Label: 'Active Search Funds' }
     ],
     portfolio: [
-      { Number: `${investments.length}`, Label: 'Total Investments' },
       { Number: `${active.length}`, Label: 'Active Companies' },
       { Number: config.combinedRevenue, Label: 'Combined Revenue' },
+      { Number: config.activeSearchFunds, Label: 'Active Search Funds' },
       { Number: `${regions.size}`, Label: 'States & Provinces' },
       { Number: `${boardSeats.length}`, Label: 'Board Seats' }
     ]
@@ -238,6 +236,17 @@ async function build() {
         teamMembers,
         advisors,
         boardSeats
+      }
+    },
+    {
+      template: 'contact',
+      output: 'contact.html',
+      data: {
+        activePage: 'contact',
+        airtableConfig: {
+          pat: AIRTABLE_PAT,
+          baseId: AIRTABLE_BASE_ID
+        }
       }
     }
   ];

@@ -118,6 +118,138 @@
     });
   });
 
+  // --- Custom file upload area ---
+  var fileUploadArea = document.getElementById('fileUploadArea');
+  var fileInput = document.getElementById('contactAttachment');
+  var fileUploadLabel = document.getElementById('fileUploadLabel');
+  var fileUploadName = document.getElementById('fileUploadName');
+
+  if (fileUploadArea && fileInput) {
+    fileUploadArea.addEventListener('click', function () {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files && fileInput.files[0]) {
+        fileUploadName.textContent = fileInput.files[0].name;
+        fileUploadName.style.display = 'block';
+        fileUploadLabel.textContent = 'Change file';
+      } else {
+        fileUploadName.style.display = 'none';
+        fileUploadLabel.textContent = 'Choose a file';
+      }
+    });
+
+    fileUploadArea.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      fileUploadArea.classList.add('dragging');
+    });
+
+    fileUploadArea.addEventListener('dragleave', function () {
+      fileUploadArea.classList.remove('dragging');
+    });
+
+    fileUploadArea.addEventListener('drop', function (e) {
+      e.preventDefault();
+      fileUploadArea.classList.remove('dragging');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        fileInput.files = e.dataTransfer.files;
+        fileUploadName.textContent = e.dataTransfer.files[0].name;
+        fileUploadName.style.display = 'block';
+        fileUploadLabel.textContent = 'Change file';
+      }
+    });
+  }
+
+  // --- Contact form submission ---
+  var contactForm = document.getElementById('contactForm');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var form = e.target;
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var statusEl = document.getElementById('contactStatus');
+      var pat = form.getAttribute('data-airtable-pat');
+      var baseId = form.getAttribute('data-airtable-base');
+      var tableName = 'Website - Contact';
+      var fileInput = form.querySelector('#contactAttachment');
+
+      // Disable button
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      statusEl.style.display = 'none';
+
+      var payload = {
+        fields: {
+          Name: form.querySelector('#contactName').value.trim(),
+          Email: form.querySelector('#contactEmail').value.trim(),
+          Subject: form.querySelector('#contactSubject').value,
+          Message: form.querySelector('#contactMessage').value.trim()
+        }
+      };
+
+      var apiBase = 'https://api.airtable.com/v0/' + baseId + '/' + encodeURIComponent(tableName);
+
+      // Create the record first
+      fetch(apiBase, {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + pat,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error('Submission failed');
+          return response.json();
+        })
+        .then(function (record) {
+          var recordId = record.id;
+          var file = fileInput && fileInput.files && fileInput.files[0];
+
+          if (!file) return Promise.resolve();
+
+          // Upload attachment to the record
+          var uploadUrl = 'https://content.airtable.com/v0/' + baseId + '/' + encodeURIComponent(tableName) + '/' + recordId + '/Attachment';
+
+          return fetch(uploadUrl, {
+            method: 'POST',
+            headers: {
+              Authorization: 'Bearer ' + pat,
+              'Content-Type': file.type || 'application/octet-stream',
+              'Content-Disposition': 'attachment; filename="' + file.name.replace(/"/g, '') + '"'
+            },
+            body: file
+          }).then(function (uploadResponse) {
+            if (!uploadResponse.ok) {
+              console.warn('Attachment upload failed, but message was sent.');
+            }
+          });
+        })
+        .then(function () {
+          statusEl.style.display = 'block';
+          statusEl.style.backgroundColor = '#f0f7f0';
+          statusEl.style.color = '#2d6a2e';
+          statusEl.style.border = '1px solid #c3e6c3';
+          statusEl.textContent = 'Thank you! Your message has been sent. We will be in touch soon.';
+          form.reset();
+        })
+        .catch(function () {
+          statusEl.style.display = 'block';
+          statusEl.style.backgroundColor = '#fdf0f0';
+          statusEl.style.color = '#a33';
+          statusEl.style.border = '1px solid #f0c3c3';
+          statusEl.textContent = 'Something went wrong. Please email us directly at info@dmfund.co.';
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        });
+    });
+  }
+
   // --- Counter animation for stats ---
   const statNumbers = document.querySelectorAll('.stat__number');
 

@@ -6,8 +6,8 @@
         <a href="index.html" class="nav__link{{#if (eq activePage 'index')}} nav__link--active{{/if}}">Home</a>
         <a href="portfolio.html" class="nav__link{{#if (eq activePage 'portfolio')}} nav__link--active{{/if}}">Portfolio</a>
         <a href="about.html" class="nav__link{{#if (eq activePage 'about')}} nav__link--active{{/if}}">About</a>
-        <a href="{{#if (eq activePage 'index')}}#contact{{else}}index.html#contact{{/if}}" class="nav__link">Contact</a>
-        <a href="#" class="nav__link nav__link--cta">Investor Login</a>
+        <a href="contact.html" class="nav__link{{#if (eq activePage 'contact')}} nav__link--active{{/if}}">Contact</a>
+        <a href="#" class="nav__link nav__link--cta">Login</a>
       </div>
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
         <span></span>
