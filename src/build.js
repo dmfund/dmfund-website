@@ -254,6 +254,12 @@ async function build() {
   copyDir(path.join(rootDir, 'js'), path.join(distDir, 'js'));
   copyDir(path.join(rootDir, 'images'), path.join(distDir, 'images'));
 
+  // Copy CNAME for custom domain
+  const cnameSrc = path.join(rootDir, 'CNAME');
+  if (fs.existsSync(cnameSrc)) {
+    fs.copyFileSync(cnameSrc, path.join(distDir, 'CNAME'));
+  }
+
   console.log('Build complete! Output in dist/');
 }
 
