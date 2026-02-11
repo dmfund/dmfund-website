@@ -1321,7 +1321,7 @@ p {
     justify-content: center;
     align-items: center;
     gap: 32px;
-    z-index: 999;
+    z-index: 1001;
   }
 
   .nav__links.active {
@@ -1340,7 +1340,7 @@ p {
   .nav__toggle {
     display: flex;
     position: relative;
-    z-index: 1001;
+    z-index: 1002;
   }
 
   .nav__toggle span {
