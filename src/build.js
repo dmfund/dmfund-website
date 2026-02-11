@@ -53,6 +53,48 @@ async function fetchTable(tableName, options = {}) {
   return allRecords;
 }
 
+// --- Download Airtable images locally ---
+
+async function downloadImage(url, destPath) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Failed to download image: ${response.status}`);
+  const buffer = Buffer.from(await response.arrayBuffer());
+  fs.writeFileSync(destPath, buffer);
+}
+
+function slugify(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+async function downloadAllImages(records, fieldName, subDir, distDir) {
+  const imgDir = path.join(distDir, 'images', subDir);
+  fs.mkdirSync(imgDir, { recursive: true });
+
+  const downloads = [];
+
+  for (const record of records) {
+    const attachments = record[fieldName];
+    if (!attachments || !attachments.length) continue;
+
+    const attachment = attachments[0];
+    const ext = (attachment.type || 'image/jpeg').split('/')[1] || 'jpg';
+    const filename = `${slugify(record.Name)}.${ext}`;
+    const localPath = `images/${subDir}/${filename}`;
+    const destPath = path.join(distDir, localPath);
+
+    // Replace the Airtable URL with the local path
+    attachment.localPath = localPath;
+
+    downloads.push(
+      downloadImage(attachment.url, destPath)
+        .then(() => console.log(`  Downloaded: ${localPath}`))
+        .catch(err => console.warn(`  Warning: Could not download image for "${record.Name}": ${err.message}`))
+    );
+  }
+
+  await Promise.all(downloads);
+}
+
 // --- Compute stats from fetched data ---
 // Airtable fields: Name, Website, Description, Acquired Date, Logo, Board Seat (Yes/No), Status (Active/Exited)
 
@@ -114,10 +156,10 @@ function registerHelpers() {
     return dateStr.substring(0, 4);
   });
 
-  // Get logo URL from Airtable attachment array
+  // Get logo URL — prefer local downloaded path, fall back to Airtable URL
   Handlebars.registerHelper('logoUrl', function (logoArray) {
     if (!logoArray || !logoArray.length) return '';
-    return logoArray[0].url;
+    return logoArray[0].localPath || logoArray[0].url;
   });
 
   // Check if logo exists
@@ -201,14 +243,21 @@ async function build() {
   // Compute stats
   const stats = computeStats(investments);
 
+  // Prepare dist directory
+  const distDir = path.join(__dirname, '..', 'dist');
+  fs.mkdirSync(distDir, { recursive: true });
+
+  // Download Airtable images locally so they don't expire
+  console.log('Downloading images from Airtable...');
+  await Promise.all([
+    downloadAllImages(investments, 'Logo', 'logos', distDir),
+    downloadAllImages(people, 'Image', 'people', distDir)
+  ]);
+
   console.log('Rendering templates...');
 
   registerHelpers();
   registerPartials();
-
-  // Prepare dist directory
-  const distDir = path.join(__dirname, '..', 'dist');
-  fs.mkdirSync(distDir, { recursive: true });
 
   // Render pages
   const pages = [

@@ -1056,7 +1056,8 @@ p {
   display: block;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 4px;
   transition: var(--transition-fast);
 }
 
@@ -1328,6 +1329,11 @@ p {
 
   .nav__links .nav__link {
     font-size: 1.1rem;
+    color: var(--color-text);
+  }
+
+  .nav__links .nav__link--cta {
+    color: var(--color-white) !important;
   }
 
   .nav__toggle {
