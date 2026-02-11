@@ -224,8 +224,13 @@ p {
   background-color: var(--color-primary);
 }
 
-/* When mobile menu is open, disable backdrop-filter so it doesn't
-   create a containing block that traps the fixed-position menu overlay */
+/* When mobile menu is open, expand nav to full viewport and disable
+   backdrop-filter so it doesn't create a containing block that traps
+   the fixed-position menu overlay */
+.nav.nav--menu-open {
+  bottom: 0;
+}
+
 .nav.nav--menu-open.scrolled {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
