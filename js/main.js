@@ -8,7 +8,10 @@
   // --- Navigation scroll effect ---
   const nav = document.getElementById('nav');
 
+  var menuOpen = false;
+
   function handleNavScroll() {
+    if (menuOpen) return;
     if (window.scrollY > 50) {
       nav.classList.add('scrolled');
     } else {
@@ -27,9 +30,16 @@
     navToggle.addEventListener('click', function () {
       navToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
-      var isOpen = navLinks.classList.contains('active');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-      nav.classList.toggle('nav--menu-open', isOpen);
+      menuOpen = navLinks.classList.contains('active');
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+      // Remove scrolled class (which applies backdrop-filter) while menu
+      // is open — backdrop-filter creates a containing block that breaks
+      // position:fixed on the overlay in iOS WebKit.
+      if (menuOpen) {
+        nav.classList.remove('scrolled');
+      } else {
+        handleNavScroll();
+      }
     });
 
     // Close mobile nav on link click
@@ -37,8 +47,9 @@
       link.addEventListener('click', function () {
         navToggle.classList.remove('active');
         navLinks.classList.remove('active');
+        menuOpen = false;
         document.body.style.overflow = '';
-        nav.classList.remove('nav--menu-open');
+        handleNavScroll();
       });
     });
   }

@@ -224,17 +224,6 @@ p {
   background-color: var(--color-primary);
 }
 
-/* When mobile menu is open, expand nav to full viewport and disable
-   backdrop-filter so it doesn't create a containing block that traps
-   the fixed-position menu overlay */
-.nav.nav--menu-open {
-  bottom: 0;
-}
-
-.nav.nav--menu-open.scrolled {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
 
 .nav__inner {
   display: flex;
@@ -1321,7 +1310,7 @@ p {
 
   .nav__links {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
