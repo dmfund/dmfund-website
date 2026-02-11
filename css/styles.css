@@ -224,6 +224,7 @@ p {
   background-color: var(--color-primary);
 }
 
+
 .nav__inner {
   display: flex;
   align-items: center;
@@ -1309,11 +1310,12 @@ p {
 
   .nav__links {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: 100vh;
+    height: 100dvh;
     background-color: var(--color-cream);
     flex-direction: column;
     justify-content: center;

@@ -27,7 +27,8 @@
     navToggle.addEventListener('click', function () {
       navToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
-      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+      var isOpen = navLinks.classList.contains('active');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
     // Close mobile nav on link click
