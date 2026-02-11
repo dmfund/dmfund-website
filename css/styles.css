@@ -1056,8 +1056,7 @@ p {
   display: block;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 16px;
-  padding-bottom: 4px;
+  margin-bottom: 20px;
   transition: var(--transition-fast);
 }
 
@@ -1340,6 +1339,10 @@ p {
     display: flex;
     position: relative;
     z-index: 1001;
+  }
+
+  .nav__toggle span {
+    background-color: var(--color-primary) !important;
   }
 
   .nav__toggle.active span:nth-child(1) {
