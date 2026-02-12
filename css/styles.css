@@ -1256,6 +1256,54 @@ p {
   font-size: 0.9rem;
 }
 
+/* --- Story Section (About Page) --- */
+.story-intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.story-intro .divider {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.story-intro p {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.15rem;
+  line-height: 1.85;
+}
+
+.story-quote {
+  padding: 80px 0;
+  background-color: var(--color-primary);
+}
+
+.story-quote__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story-quote__inner p {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-white);
+  max-width: none;
+  margin: 0;
+}
+
+.story-quote__line {
+  width: 48px;
+  height: 2px;
+  background-color: var(--color-secondary);
+  margin: 28px auto;
+}
+
 /* --- Responsive --- */
 @media (max-width: 1024px) {
   :root {
@@ -1306,6 +1354,14 @@ p {
 
   .container {
     padding: 0 24px;
+  }
+
+  .story-quote {
+    padding: 60px 0;
+  }
+
+  .story-quote__inner p {
+    font-size: 1.15rem;
   }
 
   .nav__links {

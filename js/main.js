@@ -213,7 +213,7 @@
           if (!file) return Promise.resolve();
 
           // Upload attachment to the record
-          var uploadUrl = 'https://content.airtable.com/v0/' + baseId + '/' + encodeURIComponent(tableName) + '/' + recordId + '/Attachment';
+          var uploadUrl = 'https://content.airtable.com/v0/' + baseId + '/' + recordId + '/Attachment/uploadAttachment';
 
           return fetch(uploadUrl, {
             method: 'POST',
