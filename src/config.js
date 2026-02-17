@@ -2,5 +2,5 @@
 // Update these manually when they change.
 module.exports = {
   combinedRevenue: '$300M+',
-  activeSearchFunds: '26'
+  searchFundInvestments: '26'
 };

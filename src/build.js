@@ -77,7 +77,8 @@ async function downloadAllImages(records, fieldName, subDir, distDir) {
     if (!attachments || !attachments.length) continue;
 
     const attachment = attachments[0];
-    const ext = (attachment.type || 'image/jpeg').split('/')[1] || 'jpg';
+    const rawExt = (attachment.type || 'image/jpeg').split('/')[1] || 'jpg';
+    const ext = rawExt === 'svg+xml' ? 'svg' : rawExt;
     const filename = `${slugify(record.Name)}.${ext}`;
     const localPath = `images/${subDir}/${filename}`;
     const destPath = path.join(distDir, localPath);
@@ -115,12 +116,12 @@ function computeStats(investments) {
     home: [
       { Number: `${active.length}`, Label: 'Active Companies' },
       { Number: config.combinedRevenue, Label: 'Combined Revenue' },
-      { Number: config.activeSearchFunds, Label: 'Active Search Funds' }
+      { Number: config.searchFundInvestments, Label: 'Search Fund Investments' }
     ],
     portfolio: [
       { Number: `${active.length}`, Label: 'Active Companies' },
       { Number: config.combinedRevenue, Label: 'Combined Revenue' },
-      { Number: config.activeSearchFunds, Label: 'Active Search Funds' },
+      { Number: config.searchFundInvestments, Label: 'Search Fund Investments' },
       { Number: `${regions.size}`, Label: 'States & Provinces' },
       { Number: `${boardSeats.length}`, Label: 'Board Seats' }
     ]
