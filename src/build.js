@@ -318,6 +318,13 @@ async function build() {
   copyDir(path.join(rootDir, 'js'), path.join(distDir, 'js'));
   copyDir(path.join(rootDir, 'images'), path.join(distDir, 'images'));
 
+  // Copy portal app
+  const portalSrc = path.join(rootDir, 'portal');
+  if (fs.existsSync(portalSrc)) {
+    copyDir(portalSrc, path.join(distDir, 'portal'));
+    console.log('  Copied portal/');
+  }
+
   // Copy CNAME for custom domain
   const cnameSrc = path.join(rootDir, 'CNAME');
   if (fs.existsSync(cnameSrc)) {
