@@ -233,6 +233,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.08;
   letter-spacing: -0.025em;
   color: var(--white);
+  margin-left: -3px;
   margin-bottom: 22px;
 }
 .hero__title-line { display: block; }
