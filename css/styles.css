@@ -1019,22 +1019,23 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 768px) {
   .nav__links {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    background: #ffffff;
+    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #ffffff !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     z-index: 1001;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease);
   }
   .nav__links.active {
-    opacity: 1;
-    visibility: visible;
+    display: flex !important;
   }
   .nav__link {
     font-size: 1.5rem;
@@ -1043,7 +1044,7 @@ img { max-width: 100%; display: block; }
     min-height: 48px;
     display: flex;
     align-items: center;
-    color: var(--text);
+    color: #1a1a2e !important;
   }
   .nav__link--cta {
     margin-top: 12px;
