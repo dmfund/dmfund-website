@@ -315,6 +315,10 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
         <div id="portfolio-map" style="height: 480px; width: 100%; background: var(--surface);"></div>
       </div>
+      <div style="display:flex;gap:24px;justify-content:center;margin-top:16px;font-size:13px;color:#666;">
+        <span><span style="display:inline-block;width:10px;height:10px;background:#3d5a80;border-radius:50;margin-right:6px;vertical-align:middle;border-radius:50%;"></span>Active</span>
+        <span><span style="display:inline-block;width:10px;height:10px;background:#9ca3af;border-radius:50%;margin-right:6px;vertical-align:middle;"></span>Exited</span>
+      </div>
     </div>
   </section>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -329,13 +333,20 @@
       maxZoom: 18
     }).addTo(map);
     var accent = '#3d5a80';
-    var icon = L.divIcon({
-      className: '',
-      html: '<div style="width:12px;height:12px;background:'+accent+';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.3);"></div>',
-      iconSize: [12, 12],
-      iconAnchor: [6, 6]
-    });
+    var exitedColor = '#9ca3af';
+    function makeIcon(color) {
+      return L.divIcon({
+        className: '',
+        html: '<div style="width:12px;height:12px;background:'+color+';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.3);"></div>',
+        iconSize: [12, 12],
+        iconAnchor: [6, 6]
+      });
+    }
+    var icon = makeIcon(accent);
+    var exitedIcon = makeIcon(exitedColor);
     var companies = [
+      {name:'ICS',loc:'McKinney, TX',lat:33.1972,lng:-96.6397,logo:'ics.png',exited:true},
+      {name:'MotionVFX',loc:'Bielsko-Biała, Poland',lat:49.8225,lng:19.0444,logo:'motionvfx.png',exited:true},
       {name:'Venio Systems',loc:'Fairfax, VA',lat:38.8462,lng:-77.3064,logo:'venio-systems.png'},
       {name:'SafeLogic',loc:'Vienna, VA',lat:38.9012,lng:-77.2653,logo:'safelogic.png'},
       {name:'Newbury Franklin Industrials',loc:'Newburyport, MA',lat:42.8126,lng:-70.8773,logo:'newbury-franklin-industrials.png'},
@@ -381,16 +392,19 @@
       group.forEach(function(c) { avgLat += c.lat; avgLng += c.lng; });
       avgLat /= group.length;
       avgLng /= group.length;
+      var hasActive = group.some(function(c) { return !c.exited; });
+      var dotColor = hasActive ? accent : exitedColor;
       var countIcon = group.length > 1 ? L.divIcon({
         className: '',
-        html: '<div style="width:20px;height:20px;background:'+accent+';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.3);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;">'+group.length+'</div>',
+        html: '<div style="width:20px;height:20px;background:'+dotColor+';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.3);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;">'+group.length+'</div>',
         iconSize: [20, 20],
         iconAnchor: [10, 10]
-      }) : icon;
+      }) : (group[0].exited ? exitedIcon : icon);
       var rows = group.map(function(c) {
+        var tag = c.exited ? ' <span style="font-size:10px;color:#9ca3af;font-weight:400;">(Exited)</span>' : '';
         return '<div style="display:flex;align-items:center;gap:10px;padding:4px 0;">' +
           '<img src="images/companies/'+c.logo+'" alt="'+c.name+'" style="width:32px;height:32px;object-fit:contain;border-radius:6px;border:1px solid #e5e7eb;background:#fff;padding:2px;flex-shrink:0;" />' +
-          '<div><strong style="font-size:13px;">'+c.name+'</strong><br><span style="font-size:11px;color:#666;">'+c.loc+'</span></div></div>';
+          '<div><strong style="font-size:13px;">'+c.name+'</strong>'+tag+'<br><span style="font-size:11px;color:#666;">'+c.loc+'</span></div></div>';
       }).join('');
       var popupContent = '<div style="min-width:190px;">'+rows+'</div>';
       var marker = L.marker([avgLat, avgLng], {icon: countIcon})
