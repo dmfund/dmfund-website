@@ -358,13 +358,43 @@
       {name:'Protek Safety & Controls',loc:'Calgary, AB',lat:51.0447,lng:-114.0719,logo:'protek-safety-controls.png'},
       {name:'TWE Solutions',loc:'El Segundo, CA',lat:33.9192,lng:-118.4165,logo:'twe-solutions.png'}
     ];
-    companies.forEach(function(c) {
-      var popupContent = '<div style="display:flex;align-items:center;gap:10px;min-width:180px;">' +
-        '<img src="images/companies/'+c.logo+'" alt="'+c.name+'" style="width:36px;height:36px;object-fit:contain;border-radius:6px;border:1px solid #e5e7eb;background:#fff;padding:2px;flex-shrink:0;" />' +
-        '<div><strong style="font-size:13px;">'+c.name+'</strong><br><span style="font-size:12px;color:#666;">'+c.loc+'</span></div></div>';
-      var marker = L.marker([c.lat, c.lng], {icon: icon})
+    // Group nearby companies (within ~0.15 deg ≈ 10mi)
+    var groups = [];
+    var used = [];
+    var threshold = 0.15;
+    companies.forEach(function(c, i) {
+      if (used.indexOf(i) !== -1) return;
+      var group = [c];
+      used.push(i);
+      companies.forEach(function(c2, j) {
+        if (used.indexOf(j) !== -1) return;
+        if (Math.abs(c.lat - c2.lat) < threshold && Math.abs(c.lng - c2.lng) < threshold) {
+          group.push(c2);
+          used.push(j);
+        }
+      });
+      groups.push(group);
+    });
+    groups.forEach(function(group) {
+      var avgLat = 0, avgLng = 0;
+      group.forEach(function(c) { avgLat += c.lat; avgLng += c.lng; });
+      avgLat /= group.length;
+      avgLng /= group.length;
+      var countIcon = group.length > 1 ? L.divIcon({
+        className: '',
+        html: '<div style="width:20px;height:20px;background:'+accent+';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.3);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;">'+group.length+'</div>',
+        iconSize: [20, 20],
+        iconAnchor: [10, 10]
+      }) : icon;
+      var rows = group.map(function(c) {
+        return '<div style="display:flex;align-items:center;gap:10px;padding:4px 0;">' +
+          '<img src="images/companies/'+c.logo+'" alt="'+c.name+'" style="width:32px;height:32px;object-fit:contain;border-radius:6px;border:1px solid #e5e7eb;background:#fff;padding:2px;flex-shrink:0;" />' +
+          '<div><strong style="font-size:13px;">'+c.name+'</strong><br><span style="font-size:11px;color:#666;">'+c.loc+'</span></div></div>';
+      }).join('');
+      var popupContent = '<div style="min-width:190px;">'+rows+'</div>';
+      var marker = L.marker([avgLat, avgLng], {icon: countIcon})
         .addTo(map)
-        .bindPopup(popupContent, {closeButton: false, offset: [0, -4]});
+        .bindPopup(popupContent, {closeButton: false, offset: [0, -6], maxWidth: 280});
       marker.on('mouseover', function() { this.openPopup(); });
       marker.on('mouseout', function() { this.closePopup(); });
     });
