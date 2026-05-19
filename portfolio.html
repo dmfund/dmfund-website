@@ -335,33 +335,38 @@
       iconAnchor: [6, 6]
     });
     var companies = [
-      {name:'Venio Systems',loc:'Fairfax, VA',lat:38.8462,lng:-77.3064},
-      {name:'SafeLogic',loc:'Vienna, VA',lat:38.9012,lng:-77.2653},
-      {name:'Newbury Franklin Industrials',loc:'Newburyport, MA',lat:42.8126,lng:-70.8773},
-      {name:'Apex Fundraiser',loc:'Phoenix, AZ',lat:33.4484,lng:-112.0740},
-      {name:'ModuleMD',loc:'Grand Blanc, MI',lat:42.9275,lng:-83.6299},
-      {name:'PacWest',loc:'Vancouver, BC',lat:49.2827,lng:-123.1207},
-      {name:'Shorelife Brands',loc:'Reynolds, GA',lat:32.5585,lng:-84.0960},
-      {name:'Atlantic Duct Cleaning',loc:'Fairfax, VA',lat:38.8530,lng:-77.2995},
-      {name:'Footage Tools',loc:'Vaughan, ON',lat:43.8361,lng:-79.4981},
-      {name:'Canadian Industrial Pumps',loc:'Surrey, BC',lat:49.1913,lng:-122.8490},
-      {name:'Foster Heating & Cooling',loc:'Victoria, BC',lat:48.4284,lng:-123.3656},
-      {name:'Westisle Heating & Cooling',loc:'Duncan, BC',lat:48.7787,lng:-123.7079},
-      {name:'Otonom Solutions',loc:'Montreal, QC',lat:45.5017,lng:-73.5673},
-      {name:'Life Support Systems',loc:'Dedham, MA',lat:42.2418,lng:-71.1662},
-      {name:'TACNA',loc:'San Diego, CA',lat:32.7157,lng:-117.1611},
-      {name:'American Institute of Balance',loc:'Largo, FL',lat:27.9095,lng:-82.7873},
-      {name:'Oakmont Education',loc:'Akron, OH',lat:41.0814,lng:-81.5190},
-      {name:'Advanced Aircrew Academy',loc:'Atlanta, GA',lat:33.7490,lng:-84.3880},
-      {name:'Three Rivers Therapy',loc:'Kennewick, WA',lat:46.2112,lng:-119.1372},
-      {name:'Cyber Data Pros',loc:'Atlanta, GA',lat:33.7560,lng:-84.3960},
-      {name:'Protek Safety & Controls',loc:'Calgary, AB',lat:51.0447,lng:-114.0719},
-      {name:'TWE Solutions',loc:'El Segundo, CA',lat:33.9192,lng:-118.4165}
+      {name:'Venio Systems',loc:'Fairfax, VA',lat:38.8462,lng:-77.3064,logo:'venio-systems.png'},
+      {name:'SafeLogic',loc:'Vienna, VA',lat:38.9012,lng:-77.2653,logo:'safelogic.png'},
+      {name:'Newbury Franklin Industrials',loc:'Newburyport, MA',lat:42.8126,lng:-70.8773,logo:'newbury-franklin-industrials.png'},
+      {name:'Apex Fundraiser',loc:'Phoenix, AZ',lat:33.4484,lng:-112.0740,logo:'apex-fundraiser.png'},
+      {name:'ModuleMD',loc:'Grand Blanc, MI',lat:42.9275,lng:-83.6299,logo:'modulemd.png'},
+      {name:'PacWest',loc:'Vancouver, BC',lat:49.2827,lng:-123.1207,logo:'pacwest.png'},
+      {name:'Shorelife Brands',loc:'Reynolds, GA',lat:32.5585,lng:-84.0960,logo:'shorelife-brands.svg'},
+      {name:'Atlantic Duct Cleaning',loc:'Fairfax, VA',lat:38.8530,lng:-77.2995,logo:'atlantic-duct-cleaning.jpeg'},
+      {name:'Footage Tools',loc:'Vaughan, ON',lat:43.8361,lng:-79.4981,logo:'footage-tools.svg'},
+      {name:'Canadian Industrial Pumps',loc:'Surrey, BC',lat:49.1913,lng:-122.8490,logo:'canadian-industrial-pumps.jpeg'},
+      {name:'Foster Heating & Cooling',loc:'Victoria, BC',lat:48.4284,lng:-123.3656,logo:'foster-heating-cooling.jpeg'},
+      {name:'Westisle Heating & Cooling',loc:'Duncan, BC',lat:48.7787,lng:-123.7079,logo:'westisle-heating-cooling.png'},
+      {name:'Otonom Solutions',loc:'Montreal, QC',lat:45.5017,lng:-73.5673,logo:'otonom-solutions.png'},
+      {name:'Life Support Systems',loc:'Dedham, MA',lat:42.2418,lng:-71.1662,logo:'life-support-systems.jpeg'},
+      {name:'TACNA',loc:'San Diego, CA',lat:32.7157,lng:-117.1611,logo:'tacna.png'},
+      {name:'American Institute of Balance',loc:'Largo, FL',lat:27.9095,lng:-82.7873,logo:'american-institute-of-balance.png'},
+      {name:'Oakmont Education',loc:'Akron, OH',lat:41.0814,lng:-81.5190,logo:'oakmont-education.png'},
+      {name:'Advanced Aircrew Academy',loc:'Atlanta, GA',lat:33.7490,lng:-84.3880,logo:'advanced-aircrew-academy.png'},
+      {name:'Three Rivers Therapy',loc:'Kennewick, WA',lat:46.2112,lng:-119.1372,logo:'three-rivers-therapy.png'},
+      {name:'Cyber Data Pros',loc:'Atlanta, GA',lat:33.7560,lng:-84.3960,logo:'cyber-data-pros.jpeg'},
+      {name:'Protek Safety & Controls',loc:'Calgary, AB',lat:51.0447,lng:-114.0719,logo:'protek-safety-controls.png'},
+      {name:'TWE Solutions',loc:'El Segundo, CA',lat:33.9192,lng:-118.4165,logo:'twe-solutions.png'}
     ];
     companies.forEach(function(c) {
-      L.marker([c.lat, c.lng], {icon: icon})
+      var popupContent = '<div style="display:flex;align-items:center;gap:10px;min-width:180px;">' +
+        '<img src="images/companies/'+c.logo+'" alt="'+c.name+'" style="width:36px;height:36px;object-fit:contain;border-radius:6px;border:1px solid #e5e7eb;background:#fff;padding:2px;flex-shrink:0;" />' +
+        '<div><strong style="font-size:13px;">'+c.name+'</strong><br><span style="font-size:12px;color:#666;">'+c.loc+'</span></div></div>';
+      var marker = L.marker([c.lat, c.lng], {icon: icon})
         .addTo(map)
-        .bindPopup('<strong>'+c.name+'</strong><br>'+c.loc);
+        .bindPopup(popupContent, {closeButton: false, offset: [0, -4]});
+      marker.on('mouseover', function() { this.openPopup(); });
+      marker.on('mouseout', function() { this.closePopup(); });
     });
   })();
   </script>
